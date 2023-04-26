@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!-- saved from url=(0039)http://localhost:8000/displayattendance -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Attendance</title>
+
+    </head><body><h2>Facial Atendance System</h2>  
+  <style>
+    .alert {
+      padding: 20px;
+      margin: 5px;
+      color: #970020;
+      background-color: #ffd5de;
+    }
+    .alert2 {
+      padding: 20px;
+      margin: 5px;
+      color: #009720;
+      background-color: #deffd5;
+    }     
+  </style>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+
+        
+
+    
+
+    <form id="selfile" action="/" method="POST">
+        <select required id="file" name="file" form="selfile">
+            {% if records != None: %}
+                {% if selected != None: %}
+                    <option value="{{selected['name']}}" selected hidden>{{selected['date']}}</option>
+                {% endif %}
+
+                {% for record in records: %}
+                    <option value="{{record['name']}}">{{record['date']}}</option>
+                {% endfor %}
+            {% else: %}
+                    <option value="">None to display</option>
+            {% endif %}          
+            
+        </select>
+        <button type="submit">select</button>
+    </form>
+    {% if signins != None: %}
+    
+        <h2>{{date}}</h2>
+        <ul>
+            {% for signin in signins: %}
+                <li>{{signin['time']}} - {{signin['name']}}</li>        
+            {% endfor %}
+        </ul>
+    {% else: %}
+        <h2>No record Selected</h2>
+    {% endif %}   
+  
+    
+
+</body></html>
