@@ -31,7 +31,7 @@
         <select required id="file" name="file" form="selfile">
             {% if records != None: %}
                 {% if selected != None: %}
-                    <option value="{{selected['name']}}" selected hidden>{{selected['date']}}</option>
+                    <option value="{{selected['name']}}" selected disabled hidden>{{selected['date']}}</option>
                 {% endif %}
 
                 {% for record in records: %}
